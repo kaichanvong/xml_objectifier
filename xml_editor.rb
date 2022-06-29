@@ -1,6 +1,6 @@
 require "stringio"
 
-class XML_PARSER
+class XML_Editor
 	def initialize(args)
 		@args = args
 	end
@@ -22,14 +22,20 @@ class XML_PARSER
 		end.compact
 	end
 
+	def count
+		get_interest_name(@args).length
+	end
 end
 
 xml_str = open('interests.xml').read
-# <interests>
-# <interest name="cats"></interest>
-# <interest name="penguins"></interest>
-# </interests>
-puts XML_PARSER.new(xml_str).to_a
-puts XML_PARSER.new(xml_str).to_hash
-# [cats,penguins]
-# [{:name=>"cats"} {:name=>"penguins"}]
+	# <interests>
+	# <interest name="cats"></interest>
+	# <interest name="penguins"></interest>
+	# </interests>
+
+puts XML_Editor.new(xml_str).to_a
+puts XML_Editor.new(xml_str).to_hash
+	# [cats,penguins]
+	# [{:name=>"cats"} {:name=>"penguins"}]
+puts XML_Editor.new(xml_str).count
+	# 2 (cat & penguins)
