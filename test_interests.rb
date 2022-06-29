@@ -12,15 +12,21 @@ class XMLEditorTest < Test::Unit::TestCase
 		assert_equal(expects, actual)
 	end
 
+	def test_counting
+		actual = XML_Editor.new(@xml).count
+		expects = 2
+		assert_equal(expects, actual)
+	end
+
 	def test_hashes
 		actual = XML_Editor.new(@xml).to_hash
 		expects = [{:name=>"cats"}, {:name=>"penguins"}]
 		assert_equal(expects, actual)
 	end
 
-	def test_counting
-		actual = XML_Editor.new(@xml).count
-		expects = 2
+	def test_xml_attributes
+		actual = XML_Editor.new(@xml).information
+		expects = { :date => '29/6/2022' }
 		assert_equal(expects, actual)
 	end
 end
