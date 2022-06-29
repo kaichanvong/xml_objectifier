@@ -5,14 +5,8 @@ class XML_Editor
 		@args = args
 	end
 
-	def to_a
-		get_interest_name(@args)
-	end
-
-	def to_hash
-		interests = []
-		get_interest_name(@args).map { |interest| interests << { :name => interest }  }
-		interests
+	def count
+		get_interest_name(@args).length
 	end
 
 	def get_interest_name(interest_xml)
@@ -22,20 +16,13 @@ class XML_Editor
 		end.compact
 	end
 
-	def count
-		get_interest_name(@args).length
+	def to_a
+		get_interest_name(@args)
+	end
+
+	def to_hash
+		interests = []
+		get_interest_name(@args).map { |interest| interests << { :name => interest }  }
+		interests
 	end
 end
-
-xml_str = open('interests.xml').read
-	# <interests>
-	# <interest name="cats"></interest>
-	# <interest name="penguins"></interest>
-	# </interests>
-
-puts XML_Editor.new(xml_str).to_a
-puts XML_Editor.new(xml_str).to_hash
-	# [cats,penguins]
-	# [{:name=>"cats"} {:name=>"penguins"}]
-puts XML_Editor.new(xml_str).count
-	# 2 (cat & penguins)
