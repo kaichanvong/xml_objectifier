@@ -17,8 +17,8 @@ class XML_Objectifier
 	end
 
 	def information
-		headline_in_xml = StringIO.new(@args).readlines[0]
-		xml_entity_to_hash(headline_in_xml)
+		interest_date_in_xml = StringIO.new(@args).read.split("\n").map { |date| date = date.include?("<interests ") ? date : nil  }.compact
+		interest_date_in_xml.map { |interest_date|  xml_entity_to_hash(interest_date) }
 	end
 
 	def strip_attribute_value(val)

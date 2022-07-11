@@ -24,9 +24,18 @@ class XMLObjectifierTest < Test::Unit::TestCase
 		assert_equal(expects, actual)
 	end
 
+	# def test_hashes
+	# 	actual = XML_Objectifier.new(@xml).to_hash
+	# 	expects = { 1 => { date: '29/6/2022',
+	# 					   interests: { 1 =>"cats", 2 =>"penguins"} },
+	# 				2 => { date: '29/6/2022',
+	# 				       interests: { 1 => "cats", 2 => "penguins", 3 => "dogs"} } } 
+	# 	assert_equal(expects, actual)
+	# end
+
 	def test_xml_attributes
 		actual = XML_Objectifier.new(@xml).information
-		expects = { :date => '29/6/2022' }
+		expects = [{ :date => '29/6/2022' }, { :date => '1/7/2022' } ]
 		assert_equal(expects, actual)
 	end
 end
