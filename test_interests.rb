@@ -8,19 +8,19 @@ class XMLObjectifierTest < Test::Unit::TestCase
 
 	def test_arrays
 		actual = XML_Objectifier.new(@xml).to_a
-		expects = %w{cats penguins}
+		expects = %w{cats penguins cats penguins dogs}
 		assert_equal(expects, actual)
 	end
 
 	def test_counting
 		actual = XML_Objectifier.new(@xml).count
-		expects = 2
+		expects = 5
 		assert_equal(expects, actual)
 	end
 
 	def test_hashes
 		actual = XML_Objectifier.new(@xml).to_hash
-		expects = [{:name=>"cats"}, {:name=>"penguins"}]
+		expects = [{:name=>"cats"}, {:name=>"penguins"},{:name=>"cats"}, {:name=>"penguins"}, {:name=>"dogs"}]
 		assert_equal(expects, actual)
 	end
 
