@@ -1,6 +1,6 @@
 require "stringio"
 
-class XML_Editor
+class XML_Objectifier
 	def initialize(args)
 		@args = args
 	end
