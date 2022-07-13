@@ -24,9 +24,10 @@ class XMLObjectifierTest < Test::Unit::TestCase
 		assert_equal(expects, actual)
 	end
 
-	def test_xml_attributes
-		actual = XML_Objectifier.new(@xml).information
+	def test_date_information_xml_attributes
+		actual = XML_Objectifier.new(@xml).date_information
 		expects = [{ :date => '29/6/2022' }, { :date => '1/7/2022' } ]
 		assert_equal(expects, actual)
 	end
+
 end

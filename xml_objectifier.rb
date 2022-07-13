@@ -16,8 +16,8 @@ class XML_Objectifier
 		end.compact
 	end
 
-	def information
-		interest_date_in_xml = StringIO.new(@args).read.split("\n").map { |date| date = date.include?("<interests ") ? date : nil  }.compact
+	def date_information
+		interest_date_in_xml = StringIO.new(@args).readlines.map { |date| date = date.include?("<interests ") ? date : nil  }.compact
 		interest_date_in_xml.map { |interest_date|  xml_entity_to_hash(interest_date) }
 	end
 
